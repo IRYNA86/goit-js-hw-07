@@ -29,6 +29,12 @@ function onImageToCreateModal(event) {
     <img src="${selectedImage}" width = "800" heigth = "600">`);
     modalCreate.show();
     
+    palleteContainer.addEventListener('keydown', ESCclose);
+function ESCclose(evt) {
+  if (evt.code === 'Escape') {
+        modalCreate.close()
+  }
+}
        }
 
 palleteContainer.addEventListener('click', onPalleteContainerClick);
