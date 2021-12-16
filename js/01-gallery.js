@@ -20,6 +20,7 @@ function createColorCardMarkup() {
 palleteContainer.insertAdjacentHTML('beforeend', cardsMarkup);
 
 palleteContainer.addEventListener('click', onImageToCreateModal);
+
 function onImageToCreateModal(event) {
     event.preventDefault();
 
@@ -29,7 +30,13 @@ function onImageToCreateModal(event) {
     <img src="${selectedImage}" width = "800" heigth = "600">`);
     modalCreate.show();
     
-    palleteContainer.addEventListener('keydown', ESCclose);
+   palleteContainer.addEventListener('click', onPalleteContainerClick);
+function onPalleteContainerClick(event) {
+    if (event.target.nodeName !== "IMG") { return; };
+    console.log(event.target.nodeName);
+      
+}
+   palleteContainer.addEventListener('keydown', ESCclose);
 function ESCclose(evt) {
   if (evt.code === 'Escape') {
         modalCreate.close()
@@ -37,10 +44,4 @@ function ESCclose(evt) {
 }
        }
 
-palleteContainer.addEventListener('click', onPalleteContainerClick);
-   
-function onPalleteContainerClick(event) {
-    if (event.target.nodeName !== "IMG") { return; };
-    console.log(event.target.nodeName);
-      
-}
+
